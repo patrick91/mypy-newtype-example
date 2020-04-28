@@ -11,9 +11,8 @@ def union_hook(ctx) -> Type:
     return PlaceholderType(None, args=[AnyType(2)], line=-1)
 
 
-class Plugin(Plugin):
+class UPlugin(Plugin):
     def get_function_hook(self, fullname: str) -> Optional[Callable[[FunctionContext], Type]]:
-        print(fullname)
         if fullname == "example.make_union":
             return union_hook
 
@@ -21,4 +20,4 @@ class Plugin(Plugin):
 
 
 def plugin(version: str):
-    return Plugin
+    return UPlugin
